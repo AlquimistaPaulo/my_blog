@@ -21,8 +21,7 @@
       </div>
     </div>
     <div class="list-group">
-      <% @new_posts.each_with_index do |post, index| %>
-        <% break if index >= 5 %>
+      <% @new_posts.each do |post| %>
         <%= link_to post.title, post, class: "list-group-item post_title" %>
       <% end %>
     </div>
