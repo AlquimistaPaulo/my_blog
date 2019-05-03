@@ -1,2 +1,30 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="row">
+<div class="col-md-8">
+  <%= @posts.each do |post| %>
+    <div class="article">
+      <h2 class="post_title">タイトル:<%= post.title %></h2>
+      <p>カテゴリ:<%= post.category %></p>
+      <p>作成日:<%= post.created_at %></p>
+      <p><%= truncate(post.body,length: 50) %></p>
+      <p><%= link_to "続きを読む", post,class:"btn btn-info" %></p>
+      <hr>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-md-4">
+  <div class="card">
+    <%= image_tag @author.image_url, class:"card-img-top",alt:"著者イメージ" %> 
+    <div class="card-body">
+      <h3>著者名:<%= @author.name %></h3>
+      <p>詳細:<%= @author.description %></p>
+    </div>
+    <div class="list-group">
+      <% @new_posts.each_with_index do |post, index| %></div>
+      <% break if index >=5 %>
+      <%= link_to post.title, post, class: "list-group-item post_title" %>
+      <% end %>
+  </div>
+
+</div>
+</div>
